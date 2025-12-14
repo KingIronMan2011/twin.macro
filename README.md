@@ -190,6 +190,20 @@ Add !important to multiple classes with bracket groups:
 <div css={{ "display": "none !important", "marginLeft": "auto !important" }} />
 ```
 
+## Tailwind CSS Compatibility
+
+This package currently supports **Tailwind CSS v3.3+**. 
+
+### Tailwind CSS v4 Status
+
+While v4 is listed in peerDependencies, full v4 compatibility requires additional implementation work. Tailwind CSS v4 introduced a completely rewritten internal API:
+
+- v3 internal APIs that twin.macro depends on (e.g., `lib/util/toPath`, `lib/lib/generateRules`, `lib/lib/setupContextUtils`) are no longer available in v4
+- v4 uses a new architecture with `compile`, `compileAst`, and `__unstable__loadDesignSystem` APIs
+- Full v4 support will require refactoring core twin.macro functionality to use these new APIs
+
+For now, we recommend using Tailwind CSS v3.3+ for full compatibility. If you need v4 features, please open an issue to discuss your requirements.
+
 ## Get started
 
 Twin works with many modern stacks - take a look at these examples to get started:
