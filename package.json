@@ -1,6 +1,6 @@
 {
-  "name": "twin.macro",
-  "version": "3.4.1",
+  "name": "@kingironman2011/twin.marco",
+  "version": "4.0.0",
   "description": "Twin blends the magic of Tailwind with the flexibility of css-in-js",
   "main": "macro.js",
   "types": "types/index.d.ts",
@@ -47,7 +47,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ben-rogerson/twin.macro.git"
+    "url": "git+https://github.com/KingIronMan2011/twin.macro.git"
   },
   "keywords": [
     "emotion",
@@ -63,11 +63,11 @@
   "author": "Ben Rogerson <info@benrogerson.dev>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ben-rogerson/twin.macro/issues"
+    "url": "https://github.com/KingIronMan2011/twin.macro/issues"
   },
-  "homepage": "https://github.com/ben-rogerson/twin.macro#readme",
+  "homepage": "https://github.com/KingIronMan2011/twin.macro#readme",
   "peerDependencies": {
-    "tailwindcss": ">=3.3.1"
+    "tailwindcss": "^3.3.1 || ^4.0.0"
   },
   "dependencies": {
     "@babel/template": "^7.22.15",
@@ -126,6 +126,7 @@
     "react": "^18.2.0",
     "string-similarity": "^4.0.4",
     "styled-components": "^5.3.6",
+    "tailwindcss": "^3.4.19",
     "tailwindcss-typography": "3.1.0",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
