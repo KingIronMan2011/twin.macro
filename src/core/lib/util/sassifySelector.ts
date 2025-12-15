@@ -72,7 +72,7 @@ const sassifySelectorTasks: SassifySelectorTasks = [
   (selector): string => selector.replace(SELECTOR_ROOT, '*:root'),
 
   // Escape selectors containing forward slashes, eg: group-hover/link:bg-black
-  (selector): string => selector.replace(/\//g, '\\/'),
+  (selector): string => selector.replace(/\\/g, '\\\\').replace(/\//g, '\\/'),
 
   (selector): string => selector.trim(),
 ]

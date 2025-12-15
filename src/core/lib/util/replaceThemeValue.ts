@@ -37,7 +37,9 @@ function replaceThemeValue(
   // in class groups like this:
   // tw`w-[calc(100%-theme('spacing.1'))] w-[calc(100%-theme('spacing[0.5]'))]`
   // theme: { spacing: { 0.5: "calc(.5 * .25rem)", 1: "calc(1 * .25rem)" } }
-  const stringValue = String(themeValue).replace(/\./g, '\\.')
+  const stringValue = String(themeValue)
+    .replace(/\\/g, '\\\\')
+    .replace(/\./g, '\\.')
 
   const replacedValue = value.replace(themeFunction, stringValue)
 
