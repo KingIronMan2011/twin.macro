@@ -19,7 +19,7 @@
     "test:update": "npm run build && jest --u",
     "prepublishOnly": "npm run build"
   },
-  "publishConfig": { 
+  "publishConfig": {
     "access": "public"
   },
   "nodemonConfig": {
