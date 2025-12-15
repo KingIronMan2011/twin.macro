@@ -19,6 +19,9 @@
     "test:update": "npm run build && jest --u",
     "prepublishOnly": "npm run build"
   },
+  "publishConfig": { 
+    "access": "public"
+  },
   "nodemonConfig": {
     "ignore": [],
     "watch": [
