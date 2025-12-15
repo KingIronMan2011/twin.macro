@@ -1,8 +1,8 @@
 import * as prettier from 'prettier'
 import { diff } from 'jest-diff'
 
-async function formatJavascript(input: string): Promise<string> {
-  return await prettier.format(input.replace(/\n/g, ''), {
+function formatJavascript(input: string): string {
+  return prettier.format(input.replace(/\n/g, ''), {
     parser: 'flow',
     printWidth: 100,
   })
@@ -68,18 +68,18 @@ expect.extend({
 
     return { actual: formattedReceived, message, pass }
   },
-  async toMatchFormattedJavaScript(
+  toMatchFormattedJavaScript(
     received: string,
     argument: string
-  ): Promise<{ actual: string; message: () => string; pass: boolean }> {
+  ): { actual: string; message: () => string; pass: boolean } {
     const options = {
       comment: 'stripped(received) === stripped(argument)',
       isNot: this.isNot,
       promise: this.promise,
     }
 
-    const formattedReceived = await formatJavascript(received)
-    const formattedArgument = await formatJavascript(argument ?? '')
+    const formattedReceived = formatJavascript(received)
+    const formattedArgument = formatJavascript(argument ?? '')
     const pass = formattedReceived === formattedArgument
 
     const message = pass
