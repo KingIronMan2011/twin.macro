@@ -67,7 +67,7 @@
   },
   "homepage": "https://github.com/KingIronMan2011/twin.macro#readme",
   "peerDependencies": {
-    "tailwindcss": "^3.3.1"
+    "tailwindcss": "^3.4.19"
   },
   "dependencies": {
     "@babel/template": "^7.22.15",
