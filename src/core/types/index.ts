@@ -55,7 +55,7 @@ export type TwinConfigAll = {
 
 export type Candidate = [
   data: { layer: string },
-  rule: P.Rule | P.AtRule | P.Declaration
+  rule: P.Rule | P.AtRule | P.Declaration,
 ]
 
 export type TailwindContext = {
@@ -146,7 +146,7 @@ export type TailwindMatchOptions = {
 
 export type TailwindMatch = [
   { options?: TailwindMatchOptions; layer?: string },
-  P.Rule | P.AtRule | P.Declaration
+  P.Rule | P.AtRule | P.Declaration,
 ]
 
 export type GetConfigTwinValidatedParameters = GetPackageUsed & {

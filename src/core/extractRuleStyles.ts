@@ -75,7 +75,7 @@ function extractFromRule(
 
   return [selector, extractRuleStyles(rule.nodes, params)] as [
     string,
-    CssObject
+    CssObject,
   ]
 }
 

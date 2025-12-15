@@ -72,7 +72,9 @@ function moveDotElement({
     const args = [t.stringLiteral(styledName), styledArgs]
       .filter(Boolean)
       .filter(
-        (node): node is T.ArgumentPlaceholder | T.SpreadElement | T.Expression =>
+        (
+          node
+        ): node is T.ArgumentPlaceholder | T.SpreadElement | T.Expression =>
           node && node.type !== 'JSXNamespacedName'
       )
     replacement = t.callExpression((path as NodePath<T.Expression>).node, args)
@@ -85,7 +87,9 @@ function moveDotElement({
       t.callExpression(
         callee,
         [styledArgs].filter(
-          (node): node is T.ArgumentPlaceholder | T.SpreadElement | T.Expression =>
+          (
+            node
+          ): node is T.ArgumentPlaceholder | T.SpreadElement | T.Expression =>
             node && node.type !== 'JSXNamespacedName'
         )
       )

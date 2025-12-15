@@ -192,7 +192,7 @@ Add !important to multiple classes with bracket groups:
 
 ## Tailwind CSS Compatibility
 
-This package currently supports **Tailwind CSS v3.3+**. 
+This package currently supports **Tailwind CSS v3.3+**.
 
 ### Tailwind CSS v4 Status
 

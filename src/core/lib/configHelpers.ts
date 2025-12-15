@@ -47,13 +47,13 @@ function getTailwindConfig({
 
   const configPath = userTailwindConfig
     ? resolve(sourceRoot, userTailwindConfig)
-    : escalade(baseDirectory, (_, names) => {
+    : (escalade(baseDirectory, (_, names) => {
         if (names.includes('tailwind.config.js')) return 'tailwind.config.js'
 
         if (names.includes('tailwind.config.cjs')) return 'tailwind.config.cjs'
 
         if (names.includes('tailwind.config.ts')) return 'tailwind.config.ts'
-      }) ?? ''
+      }) ?? '')
 
   const configExists = Boolean(configPath && existsSync(configPath))
 
@@ -86,7 +86,7 @@ function getTailwindConfig({
 
 function runConfigValidator([item, value]: [
   keyof typeof configTwinValidators,
-  string | boolean
+  string | boolean,
 ]): boolean {
   const validatorConfig: Validator = configTwinValidators[item]
   if (!validatorConfig) return true
@@ -122,7 +122,7 @@ function getConfigTwinValidated(
   return Object.entries(twinConfig).reduce((result, item) => {
     const validatedItem = item as [
       keyof typeof configTwinValidators,
-      string | boolean
+      string | boolean,
     ]
     return {
       ...result,
