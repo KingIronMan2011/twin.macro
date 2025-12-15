@@ -1,16 +1,16 @@
 <p align="center">
-  <a href="https://github.com/ben-rogerson/twin.macro#gh-light-mode-only" target="_blank">
+  <a href="https://github.com/KingIronMan2011/twin.macro#gh-light-mode-only" target="_blank">
     <img src="./.github/logo-light.svg" alt="Twin examples" width="199" height="70">
   </a>
-  <a href="https://github.com/ben-rogerson/twin.macro#gh-dark-mode-only" target="_blank">
+  <a href="https://github.com/KingIronMan2011/twin.macro#gh-dark-mode-only" target="_blank">
     <img src="./.github/logo-dark.svg" alt="Twin examples" width="199" height="70">
   </a>
 </p>
 
 <p align="center">
     The <em>magic</em> of Tailwind with the <em>flexibility</em> of css-in-js.<br><br>
-    <a href="https://www.npmjs.com/package/twin.macro"><img src="https://img.shields.io/npm/dt/twin.macro.svg" alt="Total Downloads"></a>
-    <a href="https://www.npmjs.com/package/twin.macro"><img src="https://img.shields.io/npm/v/twin.macro.svg" alt="Latest Release"></a>
+    <a href="https://www.npmjs.com/package/@kingironman2011/twin.marco"><img src="https://img.shields.io/npm/dt/@kingironman2011/twin.marco.svg" alt="Total Downloads"></a>
+    <a href="https://www.npmjs.com/package/@kingironman2011/twin.marco"><img src="https://img.shields.io/npm/v/@kingironman2011/twin.marco.svg" alt="Latest Release"></a>
     <a href="https://discord.gg/Xj6x9z7"><img src="https://img.shields.io/discord/705884695400939552?label=discord&logo=discord" alt="Discord"></a>
     <br>
     <br>
@@ -22,12 +22,14 @@
     </a>
 </p>
 
+> **Note**: This is a fork of [twin.macro](https://github.com/ben-rogerson/twin.macro) maintained by @KingIronMan2011. The package name is `@kingironman2011/twin.marco` and supports Tailwind CSS v3.3+ with v4 compatibility planned for a future release.
+
 ---
 
 Style jsx elements using Tailwind classes:
 
 ```js
-import 'twin.macro'
+import '@kingironman2011/twin.marco'
 
 const Input = () => <input tw="border hover:border-black" />
 ```
@@ -35,7 +37,7 @@ const Input = () => <input tw="border hover:border-black" />
 Nest Twin’s `tw` import within a css prop to add conditional styles:
 
 ```js
-import tw from 'twin.macro'
+import tw from '@kingironman2011/twin.marco'
 
 const Input = ({ hasHover }) => (
   <input css={[tw`border`, hasHover && tw`hover:border-black`]} />
@@ -45,7 +47,7 @@ const Input = ({ hasHover }) => (
 Or mix sass styles with the css import:
 
 ```js
-import tw, { css } from 'twin.macro'
+import tw, { css } from '@kingironman2011/twin.marco'
 
 const hoverStyles = css`
   &:hover {
@@ -63,7 +65,7 @@ const Input = ({ hasHover }) => (
 You can also use the tw import to create and style new components:
 
 ```js
-import tw from 'twin.macro'
+import tw from '@kingironman2011/twin.marco'
 
 const Input = tw.input`border hover:border-black`
 ```
@@ -77,7 +79,7 @@ const PurpleInput = tw(Input)`border-purple-500`
 Switch to the styled import to add conditional styling:
 
 ```js
-import tw, { styled } from 'twin.macro'
+import tw, { styled } from '@kingironman2011/twin.marco'
 
 const StyledInput = styled.input(({ hasBorder }) => [
   `color: black;`,
@@ -89,7 +91,7 @@ const Input = () => <StyledInput hasBorder />
 Or use backticks to mix with sass styles:
 
 ```js
-import tw, { styled } from 'twin.macro'
+import tw, { styled } from '@kingironman2011/twin.marco'
 
 const StyledInput = styled.input`
   color: black;
@@ -104,7 +106,7 @@ When babel runs over your javascript or typescript files at compile time, twin g
 These css objects are then passed into your chosen css-in-js library without the need for an extra client-side bundle:
 
 ```js
-import tw from 'twin.macro'
+import tw from '@kingironman2011/twin.marco'
 
 tw`text-sm md:text-lg`
 
@@ -125,7 +127,7 @@ tw`text-sm md:text-lg`
 ```diff
 - import styled from '@emotion/styled'
 - import css from '@emotion/react'
-+ import { styled, css } from 'twin.macro'
++ import { styled, css } from '@kingironman2011/twin.marco'
 ```
 
 **🐹 Adds no size to your build** - Twin converts the classes you’ve used into css objects using Babel and then compiles away, leaving no runtime code
@@ -133,7 +135,7 @@ tw`text-sm md:text-lg`
 **🍱 Apply variants to multiple classes at once with variant groups**
 
 ```js
-import 'twin.macro'
+import '@kingironman2011/twin.marco'
 
 const interactionStyles = () => (
   <div tw="hover:(text-black underline) focus:(text-blue-500 underline)" />
@@ -163,7 +165,7 @@ Try one of these classes:
 **🖌️ Use the theme import to add values from your tailwind config**
 
 ```js
-import { css, theme } from 'twin.macro'
+import { css, theme } from '@kingironman2011/twin.marco'
 
 const Input = () => <input css={css({ color: theme`colors.purple.500` })} />
 ```
@@ -187,6 +189,20 @@ Add !important to multiple classes with bracket groups:
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 <div css={{ "display": "none !important", "marginLeft": "auto !important" }} />
 ```
+
+## Tailwind CSS Compatibility
+
+This package currently supports **Tailwind CSS v3.3+**. 
+
+### Tailwind CSS v4 Status
+
+While v4 is listed in peerDependencies, full v4 compatibility requires additional implementation work. Tailwind CSS v4 introduced a completely rewritten internal API:
+
+- v3 internal APIs that twin.macro depends on (e.g., `lib/util/toPath`, `lib/lib/generateRules`, `lib/lib/setupContextUtils`) are no longer available in v4
+- v4 uses a new architecture with `compile`, `compileAst`, and `__unstable__loadDesignSystem` APIs
+- Full v4 support will require refactoring core twin.macro functionality to use these new APIs
+
+For now, we recommend using Tailwind CSS v3.3+ for full compatibility. If you need v4 features, please open an issue to discuss your requirements.
 
 ## Get started
 
