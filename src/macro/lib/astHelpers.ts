@@ -395,7 +395,7 @@ function getFirstStyledArgument(
   if (path)
     return isComponent(path) ? t.identifier(path) : t.stringLiteral(path)
 
-  const dotComponent = get(jsxPath, 'node.name') as string
+  const dotComponent = get(jsxPath, 'node.name') as unknown as Record<string, any>
   assert(Boolean(dotComponent), () => jsxSingleDotError)
 
   // Element name has dots in it

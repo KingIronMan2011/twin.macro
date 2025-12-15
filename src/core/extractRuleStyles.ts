@@ -248,7 +248,7 @@ const ruleTypes = {
       params.passChecks = true
     }
 
-    const styles = extractRuleStyles(atrule.nodes, params)
+    const styles = extractRuleStyles(atrule.nodes ?? [], params)
     if (!styles) return
 
     let ruleset = { [selector]: styles }
