@@ -69,14 +69,27 @@ function moveDotElement({
   let replacement
   if (moveToParam) {
     // `styled('div', {})`
-    const args = [t.stringLiteral(styledName), styledArgs].filter(Boolean)
+    const args = [t.stringLiteral(styledName), styledArgs]
+      .filter(Boolean)
+      .filter(
+        (node): node is T.ArgumentPlaceholder | T.SpreadElement | T.Expression =>
+          node && node.type !== 'JSXNamespacedName'
+      )
     replacement = t.callExpression((path as NodePath<T.Expression>).node, args)
   } else {
     // `styled('div')({})`
     const callee = t.callExpression((path as NodePath<T.Expression>).node, [
       t.stringLiteral(styledName),
     ])
-    replacement = t.expressionStatement(t.callExpression(callee, [styledArgs]))
+    replacement = t.expressionStatement(
+      t.callExpression(
+        callee,
+        [styledArgs].filter(
+          (node): node is T.ArgumentPlaceholder | T.SpreadElement | T.Expression =>
+            node && node.type !== 'JSXNamespacedName'
+        )
+      )
+    )
   }
 
   replaceWithLocation(parentCallExpression, replacement)

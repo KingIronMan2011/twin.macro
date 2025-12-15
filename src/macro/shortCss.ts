@@ -79,14 +79,11 @@ function handleCsProperty({
   // If it's not {} or "", get out of here
   if (
     !attributeValuePath ||
-    // @ts-expect-error The type checking functions don't exist on NodePath
     (!attributeValuePath.isJSXExpressionContainer() &&
-      // @ts-expect-error The type checking functions don't exist on NodePath
       !attributeValuePath.isStringLiteral())
   )
     return
 
-  // @ts-expect-error The type checking functions don't exist on NodePath
   const existingCssAttribute = attributeValuePath.isStringLiteral()
     ? (attributeValuePath as unknown as NodePath<T.StringLiteral>)
     : // @ts-expect-error get doesn’t exist on the types
